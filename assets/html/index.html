@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Leilão em tempo Real</title>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/x-icon" href="/img/favicon-memory-test.png">
+  <link rel="stylesheet" href="/css/default.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+  <script src="/js/index.js"></script>
+</head>
+
+<body>
+  <h1>Sistema de Leilão em Tempo Real</h1>
+
+  <h2>Ofertas</h2>
+  <ul id="bids"></ul>
+
+  <h2>Fazer uma Oferta</h2>
+  
+  <form id="bidForm">
+    <input type="text" id="bidAmount" placeholder="Valor da oferta" required>
+    <button type="submit">Enviar oferta</button>
+  </form>
+
+    <footer class="footer-grid">
+      <div class="footer-content">
+        <div class="projeto">
+          <!-- <img src="/img/logo-memory-test.png" alt="memory test logo" /> -->
+          <a href="https://github.com/LuizGustavoSalvador/socket-leilao" target="_blank">Acesse o projeto Socket Leilão</a>
+        </div>
+        <div class="devers">
+          <h3>Desenvolvido por</h3>
+          <a href="https://github.com/LuizGustavoSalvador" target="_blank">
+            <!-- <img src="/img/github-logo.png" alt="github logo" /> -->
+            <p>Luiz Gustavo Fontanela Salvador</p>
+          </a>
+        </div>
+      </div>
+      <div class="subfooter">
+        <span class="copyright">Socket Leilão Test. Todos os direitos Reservados.</span>
+      </div>
+    </footer>
+    <!-- <div class="custom-js" style="display: none;">
+      <script type="module">
+        import { User } from "/js/user.js";
+        window.User = new User();
+      </script>
+      {{jsCustom}}
+    </div> -->
+</body>
+
+</html>

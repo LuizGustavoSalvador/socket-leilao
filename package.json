@@ -1,8 +1,28 @@
 {
+  "name": "socket-leilao",
+  "description": "Trabalho de socket da disciplina de Redes de computadores",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "build": "lessc assets/less/style.less assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuizGustavoSalvador/socket-leilao.git"
+  },
+  "author": "Luiz Gustavo Salvador",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuizGustavoSalvador/socket-leilao/issues"
+  },
+  "homepage": "https://github.com/LuizGustavoSalvador/socket-leilao#readme",
   "dependencies": {
     "express": "^4.18.2",
     "nodejs": "^0.0.0",
     "nodemon": "^2.0.22",
+    "router": "^1.3.8",
     "socket.io": "^4.6.2"
   }
 }

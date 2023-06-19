@@ -1,0 +1,87 @@
+:root {
+  --blue: #0b0f35;
+  --lightBlue: #cee9ff;
+  --correctGreen: #43b428;
+  --correctGreenBackground: #d0ffc5;
+  --errorRed: #ff5353;
+  --errorRedBackground: #ffb0b0;
+  --gray: #b3b3b3;
+  --light: 300;
+  --regular: 400;
+  --medium: 500;
+  --bold: 700;
+}
+.DisplayFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.FlexAlignCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.FlexJustCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.FlexSpaceBetween {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.FlexPower {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.FlexColumn {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.FlexEnd {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+.FlexJustEnd {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+.FlexWrap {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.TransitionPadrao {
+  -webkit-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+h1 {
+  text-align: center;
+  padding: calc(16.000px + 1.250vw) 0;
+  font-size: calc(28.000px + 0.625vw);
+  color: var(--blue);
+}
