@@ -15,66 +15,67 @@ const HOST = '0.0.0.0';
 app.use(express.static(__dirname + '/assets'));
 app.use(routes);
 
-let auctionTime = 5; // Tempo inicial do leilão em segundos
-let timer; // Referência para o temporizador
-
-// Configuração do socket.io
 io.on('connection', (socket) => {
+  let countdown = 5;
+  let timer;
+
   console.log('Novo cliente conectado');
 
-  // começa o leilão
-  socket.on('startAuction', () => {
-    if (!timer) {
-      timer = setInterval(() => {
-        auctionTime--;
-        if (auctionTime < 0) {
-          let winner = JSON.parse(fs.readFileSync('./src/data/offer.json', 'utf-8')).reduce((max, o) => {
-            if (o.offer > max) {
-              return o.id;
-            } else {
-              return max;
-            }
-          }, 0);
-          clearInterval(timer);
-          timer = null;
-          io.emit('auctionEnd', winner);
-        } else {
-          io.emit('timer', auctionTime);
-        }
-      }, 1000);
-    }
+  socket.on('startAuction', (id) => {
+      if (!timer) {
+          timer = setInterval(() => {
+              countdown--;
+
+              if (countdown < 0) {
+                  let winner = JSON.parse(fs.readFileSync('./src/data/offer.json', 'utf-8')).filter((o) => o.id_vehicle === id)
+                  let win = winner.reduce((current, next) => {
+
+                    if (!current) {
+                      return next;
+                    }
+
+                    return +current.offer < +next.offer ? next : current;
+                  }, null);
+
+                  clearInterval(timer);
+                  timer = null;
+                  io.emit('auctionEnd', win);
+              } else {
+                  io.emit('timer', countdown);
+              }
+          }, 1000);
+      }
   });
 
   // Evento para o cliente enviar uma oferta
   socket.on('offer', (offer) => {
-    const { id, amount } = offer;
-    let offers = JSON.parse(fs.readFileSync('./src/data/offer.json', 'utf-8'));
+      const { id, amount } = offer;
+      let offers = JSON.parse(fs.readFileSync('./src/data/offer.json', 'utf-8'));
 
-    offers.push({
-      "id": uuid.v1(),
-      "id_vehicle": id,
-      "offer": amount,
-    });
+      offers.push({
+          "id": uuid.v1(),
+          "id_vehicle": id,
+          "offer": amount,
+      });
 
-    fs.writeFileSync("./src/data/offer.json", JSON.stringify(offers), { encoding: "utf-8" });
+      fs.writeFileSync("./src/data/offer.json", JSON.stringify(offers), { encoding: "utf-8" });
 
-    // Emitir a nova oferta para todos os clientes conectados
-    io.emit('newBid', amount);
+      // Emitir a nova oferta para todos os clientes conectados
+      io.emit('newBid', amount);
   });
 
   // Evento para obter as ofertas atuais
   socket.on('getOffers', (id) => {
-    let offers = JSON.parse(fs.readFileSync('./src/data/offer.json', 'utf-8')).filter((o) => o.id_vehicle === id);
+      let offers = JSON.parse(fs.readFileSync('./src/data/offer.json', 'utf-8')).filter((o) => o.id_vehicle === id);
 
-    socket.emit('currentBids', offers);
+      socket.emit('currentBids', offers);
   });
 
   // Evento quando o cliente é desconectado
   socket.on('disconnect', () => {
-    console.log('Cliente desconectado');
+      console.log('Cliente desconectado');
   });
 });
-
 
 server.listen(PORT, HOST, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
