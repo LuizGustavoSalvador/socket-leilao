@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "COMPASS LIMITED 2.0 4X4 DIESEL 16V AUT.",
+    "slug": "compass-limited",
+    "brand": "Jeep",
+    "year": "2021",
+    "color": "branco",
+    "initial_price": "190.000,00"
+  },
+  {
+    "id": 2,
+    "name": "OUTLANDER HPE-S 3.0 V6 4X4 5P AUT.",
+    "slug": "outlander",
+    "brand": "Mitsubishi",
+    "year": "2021",
+    "color": "prata",
+    "initial_price": "200.000,00"
+  },
+  {
+    "id": 3,
+    "name": "2500 LARAMIE  6.7 TDI  CD 4X4 DIESEL",
+    "slug": "ram-2500-laramie",
+    "brand": "Ram",
+    "year": "2021",
+    "color": "Marrom",
+    "initial_price": "400.000,00"
+  },
+  {
+    "id": 4,
+    "name": "SANDERO SPORT RS 2.0 FLEX 16V 5P",
+    "slug": "sandero-sport-rs",
+    "brand": "Renault",
+    "year": "2022",
+    "color": "Preto",
+    "initial_price": "75.000,00"
+  }
+]

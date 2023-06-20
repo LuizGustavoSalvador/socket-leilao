@@ -1,0 +1,26 @@
+<div class="single-vehicle">
+  <h1>{{name}}</h1>
+  <div class="details">
+    <h2>Detalhes do veículo</h2>
+    <div class="list-details">
+      <p>Marca: {{brand}}</p>
+      <p>Ano: {{year}}</p>
+      <p>Cor: {{color}}</p>
+      <p>Preço Inicial: R$ {{initialPrice}}</p>
+    </div>
+  </div>
+  <div class="make-offer">
+    <h2>De um lance agora!</h2>
+    <form id="offer-form" class="form-default">
+      <input type="hidden" id="vehicleId" name="test_id" value="{{id}}" />
+      <input type="number" min="{{min}}" id="bidAmount" placeholder="Valor da oferta" required>
+      <button type="submit" class="btn-default">Dar lance</button>
+    </form>
+  </div>
+  <div class="offers">
+    <h2>Ofertas <b id="timer">Tempo restante: --</b> </h2>
+    <div id="offers" class="list-offers">
+    </div>
+  </div>
+  <a class="btn-default" href="/">Voltar</a>
+</div>
