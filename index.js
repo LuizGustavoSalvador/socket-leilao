@@ -22,29 +22,6 @@ io.on('connection', (socket) => {
   console.log('Novo cliente conectado');
 
   socket.on('startAuction', (id) => {
-      if (!timer) {
-          timer = setInterval(() => {
-              countdown--;
-
-              if (countdown < 0) {
-                  let winner = JSON.parse(fs.readFileSync('./src/data/offer.json', 'utf-8')).filter((o) => o.id_vehicle === id)
-                  let win = winner.reduce((current, next) => {
-
-                    if (!current) {
-                      return next;
-                    }
-
-                    return +current.offer < +next.offer ? next : current;
-                  }, null);
-
-                  clearInterval(timer);
-                  timer = null;
-                  io.emit('auctionEnd', win);
-              } else {
-                  io.emit('timer', countdown);
-              }
-          }, 1000);
-      }
   });
 
   // Evento para o cliente enviar uma oferta
