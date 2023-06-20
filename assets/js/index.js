@@ -38,44 +38,7 @@ window.onload = function () {
     });
   });
 
-  // Iniciar o leilão e o temporizador
+  // Iniciar o leilão
   socket.emit('startAuction', document.getElementById('vehicleId').value);
-  socket.on('timer', (seconds) => {
-    document.getElementById('timer').textContent = `Tempo restante: ${seconds}s`;
-
-    if (seconds < 1) {
-      document.querySelector("#offer-form #bidAmount").setAttribute('disabled', true);
-      document.querySelector("#offer-form button").setAttribute('disabled', true);
-    }
   });
-  
-  socket.on('auctionEnd', (winner) => {
-    document.querySelector("#offers").classList.add('end');
-    document.querySelector("#offers #offer" + winner.id).classList.add('winner');
-  });
-
-  document.getElementById('restartButton').addEventListener('click', function() {
-    restartAuction();
-  });
-  
-  function restartAuction() {
-    fetch('/restart', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        "vehicle": document.getElementById('vehicleId').value
-      }),
-    })
-    .then(response => response)
-    .then(data => {
-      console.log(data.message);
-      location.reload();
-    })
-    .catch(error => {
-      console.error('Erro ao reiniciar o leilão:', error);
-    });
-  }
 };
