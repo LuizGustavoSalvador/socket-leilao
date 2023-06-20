@@ -40,5 +40,4 @@ window.onload = function () {
 
   // Iniciar o leilão
   socket.emit('startAuction', document.getElementById('vehicleId').value);
-  });
 };
